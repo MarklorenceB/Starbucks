@@ -1,0 +1,74 @@
+.links {
+  box-shadow: 0 -2px 2px rgb(0 0 0 / 0.2);
+  &__wrapper {
+    @include grid(6, 2rem);
+    @include mediaQuery($break-md) {
+      @include grid(1, 2rem);
+    }
+  }
+
+  &__item {
+    h3 {
+      margin-bottom: 3rem;
+      color: rgb(0 0 0 / 0.8);
+      @include mediaQuery($break-md) {
+        cursor: pointer;
+      }
+      i {
+        transition: 0.5s ease;
+        position: relative;
+        display: none;
+        @include mediaQuery($break-md) {
+          display: block;
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          width: 4rem;
+          height: 4rem;
+          opacity: 0.2;
+          right: -78%;
+          top: -68%;
+          transform: scale(0);
+          background-color: $clr-gray;
+          border-radius: 50%;
+          transition: all 0.5s ease;
+          display: block;
+        }
+        &:hover::after {
+          transform: scale(1);
+        }
+      }
+
+      i.open {
+        transform: rotate(180deg);
+      }
+
+      @include mediaQuery($break-md) {
+        cursor: pointer;
+        margin-bottom: 2rem;
+      }
+    }
+    ul {
+      @include mediaQuery($break-md) {
+        height: auto;
+        max-height: 0;
+        overflow: hidden;
+        transition: 0.5s ease;
+      }
+    }
+    ul.open {
+      max-height: 30rem;
+    }
+    li {
+      margin-bottom: 2rem;
+      a {
+        color: rgb(0 0 0 / 0.5);
+        transition: 0.5s ease;
+        &:hover {
+          color: $clr-dark;
+        }
+      }
+    }
+  }
+}
